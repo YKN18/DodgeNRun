@@ -1,5 +1,3 @@
-﻿
-
-public interface Damaging {
+﻿public interface Damaging {
     int GetDamage();
 }
