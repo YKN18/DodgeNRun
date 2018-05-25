@@ -164,23 +164,28 @@ public class Player : MonoBehaviour {
     {
         if (c.collider.gameObject.layer == 8)
             isGrounded = true;
-        else if (c.collider.tag == "RedObstacle")
+        else if (c.collider.tag == "GreenObstacle")
         {
-            HealthManager.instance.Hit(c.collider.GetComponent<Damaging>().GetDamage());
-            if (c.transform.parent.gameObject.layer != 8) c.transform.parent.gameObject.SetActive(false);
-            else c.gameObject.SetActive(false);
+            if (!ready)
+            {
+                StopCoroutine("MoveSideways");
+                StartCoroutine("RecoverFromHit");
+            }
+            isGrounded = true;
         }
-        else if (!ready)
-        {
-            StopCoroutine("MoveSideways");
-            StartCoroutine("RecoverFromHit");
-        }
-        else if (c.collider.tag == "GreenObstacle") isGrounded = true;
     }
 
     void OnTriggerEnter(Collider c)
     {
-        if (c.gameObject.layer == 11)
+        if (c.gameObject.layer == 9) {
+            if (c.tag == "RedObstacle")
+            {
+                HealthManager.instance.Hit(c.GetComponent<Damaging>().GetDamage());
+                if (c.transform.parent.gameObject.layer != 8) c.transform.parent.gameObject.SetActive(false);
+                else c.gameObject.SetActive(false);
+            }
+        }
+        else if (c.gameObject.layer == 11)
         {
             SoundManager.instance.PlayPowerup();
             c.transform.parent.gameObject.SetActive(false);
