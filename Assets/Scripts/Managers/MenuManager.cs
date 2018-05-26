@@ -7,6 +7,7 @@ public class MenuManager : MonoBehaviour {
     [SerializeField] Text namesText, coinsText, timesText;
     [SerializeField] GameObject bar, progressPanel, leaderboardPanel, settingsPanel;
     [SerializeField] Slider soundVolume, effectsVolume;
+    [SerializeField] GameObject panelT1, panelT2, panelT3;
     public void PlayButton()
     {
         progressPanel.SetActive(true);
@@ -64,4 +65,25 @@ public class MenuManager : MonoBehaviour {
         SaveLoad.SaveSoundVolume(soundVolume.value);
         settingsPanel.SetActive(false);
     }
+
+    public void Tutorial() {
+        panelT1.SetActive(true);
+    }
+
+    public void T1Btn() {
+        panelT1.SetActive(false);
+        panelT2.SetActive(true);
+    }
+
+    public void T2Btn() {
+        panelT2.SetActive(false);
+        panelT3.SetActive(true);
+    }
+
+    public void Home() {
+        panelT1.SetActive(false);
+        panelT2.SetActive(false);
+        panelT3.SetActive(false);
+    }
+
 }
