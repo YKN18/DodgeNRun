@@ -98,11 +98,12 @@ public class Player : MonoBehaviour {
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
             Vector2 touchDeltaPosition = Input.GetTouch(0).position - startTouchCoordinates;
-            if (touchDeltaPosition.y > touchDeltaPosition.x && touchDeltaPosition.y > 20f && isGrounded)
+            if (touchDeltaPosition.y > touchDeltaPosition.x && touchDeltaPosition.y > 20f)
             {
-                Jump();
+                if(isGrounded)
+                    Jump();
             }
-            else if (touchDeltaPosition.x > 20f && ready)
+            else if (touchDeltaPosition.x > 0 && ready)
             {
                 goRight();
             }
