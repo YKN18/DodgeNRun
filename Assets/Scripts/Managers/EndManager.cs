@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class EndManager : MonoBehaviour {
     [SerializeField] Text yourScore;
-    [SerializeField] GameObject insertNamePanel, leaderboardPanel;
+    [SerializeField] GameObject insertNamePanel, leaderboardPanel, creditsPanel;
     [SerializeField] Text playerName;
     [SerializeField] Text namesText, timesText, coinsText;
    
@@ -64,5 +64,13 @@ public class EndManager : MonoBehaviour {
         leaderboard.Insert(new Entry(playerName.text, s, System.DateTime.Now));
         SaveLoad.SaveLeaderboard(JsonUtility.ToJson(leaderboard));
         insertNamePanel.SetActive(false);
+    }
+
+    public void Credits() {
+        creditsPanel.SetActive(true);
+    }
+
+    public void CloseCredits() {
+        creditsPanel.SetActive(false);
     }
 }

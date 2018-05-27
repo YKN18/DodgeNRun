@@ -90,7 +90,6 @@ public class Player : MonoBehaviour {
             Vector2 touchDeltaPosition = Input.GetTouch(0).position - startTouchCoordinates;
             if (touchDeltaPosition.y > touchDeltaPosition.x && touchDeltaPosition.y > 20f && isGrounded)
             {
-                isGrounded = false;
                 Jump();
             }
             else if (touchDeltaPosition.x > 20f && ready)
@@ -117,7 +116,6 @@ public class Player : MonoBehaviour {
 
         if (Input.GetAxis("Vertical") > 0 && isGrounded)
         {
-            isGrounded = false;
             Jump();
         }
         #endregion
@@ -160,19 +158,22 @@ public class Player : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter(Collision c)
-    {
-        if (c.collider.gameObject.layer == 8)
-            isGrounded = true;
-        else if (c.collider.tag == "GreenObstacle")
-        {
-            if (!ready)
-            {
-                StopCoroutine("MoveSideways");
-                StartCoroutine("RecoverFromHit");
-            }
-            isGrounded = true;
+    void OnCollisionEnter(Collision c) {
+        if (c.collider.tag == "GreenObstacle" && !ready) {
+            StopCoroutine("MoveSideways");
+            StartCoroutine("RecoverFromHit");
         }
+    }
+
+    void OnCollisionStay(Collision c)
+    {
+        if (c.collider.gameObject.layer == 8 || c.collider.tag == "GreenObstacle")
+            isGrounded = true;
+    }
+
+    void OnCollisionExit(Collision c) {
+        if(c.collider.gameObject.layer == 8 || c.collider.tag == "GreenObstacle")
+            isGrounded = false;
     }
 
     void OnTriggerEnter(Collider c)
