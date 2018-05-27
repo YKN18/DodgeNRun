@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void EndGame() {
+        //On game ending, saves the last score into player prefs and loads the end scene
         ScoreObject s = new ScoreObject(CoinManager.instance.GetCoins(), (int) playTime);
         SaveLoad.SaveLastScore(s.ToString());
         SceneManagement.LoadScene(2);
@@ -20,8 +21,8 @@ public class GameManager : MonoBehaviour {
 
     void Update()
     {
+        //Updates health, coins and time indicators on the canvas and keeps a game timer
         playTime += Time.deltaTime;
-        if (Input.GetKeyUp(KeyCode.P)) CanvasManager.instance.Pause();
         CanvasManager.instance.SetTime(playTime);
         CanvasManager.instance.SetHealth(HealthManager.instance.GetHealth());
         CanvasManager.instance.SetCoins(CoinManager.instance.GetCoins());

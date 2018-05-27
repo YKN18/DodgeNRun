@@ -13,6 +13,7 @@ public class CoinManager : MonoBehaviour {
     }
 
     public void AddCoin(int coinValue) {
+        //Adds coin to the total (triggered by a collected coin)
         coins += coinValue;
     }
 

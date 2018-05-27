@@ -11,7 +11,7 @@ public class EndSoundManager : MonoBehaviour {
     void Awake()
     {
         instance = this;
-
+        //Creates a music source for the end soundtrack and plays it
         musicSource = gameObject.AddComponent<AudioSource>();
         musicSource.loop = true;
         musicSource.volume = SaveLoad.LoadSoundVolume();

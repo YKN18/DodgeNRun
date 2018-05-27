@@ -17,11 +17,14 @@ public class PowerupManager : MonoBehaviour {
 
     public void TriggerHealthPowerup(GameObject powerup)
     {
+        //Increases the health by the bonus taken from the health powerup
         HealthManager.instance.IncreaseHealth(powerup.GetComponent<PowerupHealth>().GetBonus());
     }
 
     public void TriggerSlowPowerup(GameObject powerup)
     {
+        //If the game is already slowed down, the powerup extends the time,
+        //otherwise the game is slowed down and the previous speed is saved in curSpeed
         if (isSlow)
         {
             slowTime += powerup.GetComponent<PowerupSlow>().GetBonus();
@@ -38,6 +41,8 @@ public class PowerupManager : MonoBehaviour {
 
     public void TriggerInvinciblePowerup(GameObject powerup)
     {
+        //If the game is already invincible, the powerup extends the time,
+        //otherwise the player is made invincible 
         if (isInvincible)
         {
             invincibleTime += powerup.GetComponent<PowerupInvincible>().GetBonus();
@@ -54,6 +59,8 @@ public class PowerupManager : MonoBehaviour {
     }
 
     IEnumerator ResetSpeed() {
+        //Updates the remaining time for the slow powerup and eventually resets
+        //the previous conditions
         ts = 0;
         slowBar.GetComponent<Bar>().SetPercent((int)((1 - ts / slowTime) * 100));
         slowBar.transform.parent.gameObject.SetActive(true);
@@ -70,6 +77,8 @@ public class PowerupManager : MonoBehaviour {
 
     IEnumerator ResetInvincible()
     {
+        //Updates the remaining time for the invincible powerup and eventually resets
+        //the previous conditions
         ti = 0;
         invincibleBar.GetComponent<Bar>().SetPercent((int)((1 - ti / invincibleTime) * 100));
         invincibleBar.transform.parent.gameObject.SetActive(true);
@@ -85,6 +94,7 @@ public class PowerupManager : MonoBehaviour {
     }
 
     public void CurrentSpeedIncreased(float speedup) {
+        //Updates the curSpeed when the player speeds increases
         curSpeed += speedup;
     }
 }

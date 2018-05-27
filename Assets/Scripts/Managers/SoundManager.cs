@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour {
 
     void Awake() {
         instance = this;
-
+        //Initializes the source for soundtrack and effets and plays the soundtrack
         musicSource = gameObject.AddComponent<AudioSource>();
         musicSource.loop = true;
         musicSource.volume = SaveLoad.LoadSoundVolume();
@@ -31,25 +31,30 @@ public class SoundManager : MonoBehaviour {
 
     public void PlayHit()
     {
+        //Plays the hit sound
         playerSource.clip = hitSound;
         playerSource.Play();
     }
 
     public void PlaySoundtrack()
     {
+        //Plays the soundtrack (called by resume)
         musicSource.Play();
     }
 
     public void PauseSoundtrack() {
+        //Pauses the soundtrack (called by pause)
         musicSource.Pause();
     }
 
     public void PlayCoin() {
+        //Plays the coins sound effect
         coinSource.clip = coinTrack;
         coinSource.Play();
     }
 
     public void PlayPowerup() {
+        //Plays the powerup sound effect
         powerupSource.clip = powerupTrack;
         powerupSource.Play();
     }

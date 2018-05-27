@@ -28,7 +28,12 @@ public class Player : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
     }
 
+    //Based on the player's current position, the parameters used by the move
+    //sideways coroutine are set and a flag ready is set to false to indicate 
+    //that the player is already moving sideways.
+
     void goLeft() {
+        
         if (currentPos == "center")
         {
             current = centerX;
@@ -71,7 +76,10 @@ public class Player : MonoBehaviour {
         }
     }
 
+
     void Update() {
+
+        //Every 10 seconds the speed is increased by a speedup factor
         if (gameTimer > 10){
             gameTimer = 0;
             speed += speedUp;
@@ -81,6 +89,8 @@ public class Player : MonoBehaviour {
         gameTimer += Time.deltaTime;
 
         transform.Translate(0, 0, speed * Time.deltaTime);
+
+        //Touch and keyboard controls
 
         #region TouchControls
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
@@ -121,6 +131,8 @@ public class Player : MonoBehaviour {
         #endregion
     }
 
+
+    //Coroutine to move the player from one 'lane' to the other
     IEnumerator MoveSideways() {
         t = 0;
         while (t <= 1) {
@@ -137,6 +149,8 @@ public class Player : MonoBehaviour {
         ready = true;
     }
 
+    //Coroutine to move the player back to the starting position in case of collision
+    //with a non-damagin cube
     IEnumerator RecoverFromHit()
     {
         currentPos = pastPos;
@@ -150,6 +164,7 @@ public class Player : MonoBehaviour {
         ready = true;
     }
 
+
     private void Jump() {
         if (GameManager.instance.GetTime() - lastJumpTime > 0.2)
         {
@@ -158,6 +173,8 @@ public class Player : MonoBehaviour {
         }
     }
 
+    //If the player hits an obstacle while moving sideways, it's brought back
+    //to the original position smoothly
     void OnCollisionEnter(Collision c) {
         if (c.collider.tag == "GreenObstacle" && !ready) {
             StopCoroutine("MoveSideways");
@@ -165,17 +182,21 @@ public class Player : MonoBehaviour {
         }
     }
 
+    //While the player touches the ground or the green cube, isgrounded is true and
+    //the jump is possible
     void OnCollisionStay(Collision c)
     {
         if (c.collider.gameObject.layer == 8 || c.collider.tag == "GreenObstacle")
             isGrounded = true;
     }
 
+    //As soon as the player leaves a walkable surface, isgrounded is set to false
     void OnCollisionExit(Collision c) {
         if(c.collider.gameObject.layer == 8 || c.collider.tag == "GreenObstacle")
             isGrounded = false;
     }
 
+    //If the player enters a coin or a damaging obstacle, the suitable action is taken
     void OnTriggerEnter(Collider c)
     {
         if (c.gameObject.layer == 9) {

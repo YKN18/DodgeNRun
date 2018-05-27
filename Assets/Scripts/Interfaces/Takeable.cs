@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿//Interface for GameObjects that can be collected (coins, powerups)
 public interface Takeable<T> {
     T GetBonus();
 }

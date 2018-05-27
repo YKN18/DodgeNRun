@@ -17,6 +17,9 @@ public class HealthManager : MonoBehaviour {
     }
 
     public void Hit(int damage) {
+        //Upon hit of a damaging GameObject, reduces the health by the 'damage' amount
+        //If the health is below 0, the game ends. While the player is invincible, it
+        //can't be hit by damaging GameObjects.
         if (isInvincible || GameManager.instance.GetTime() - lastHit < 1) return;
         health -= damage;
         SoundManager.instance.PlayHit();
@@ -33,11 +36,13 @@ public class HealthManager : MonoBehaviour {
     }
 
     public void IncreaseHealth(int inc) {
+        //Increase the health by 'inc' as long as the resulting healt is below a threshold
         if(health + inc <= maxHealth)
             health += inc;
     }
 
     public void SetInvincible(bool b) {
+        //Prevents the health to decrement as long as the invincible powerup is active
         isInvincible = b;
     }
 

@@ -8,6 +8,7 @@ public class Powerup<T> : MonoBehaviour,  Takeable<T> {
     protected T bonus;
 
     virtual public T GetBonus() {
+        //Function to be overriden, implements the getbonus method from takeable
         return bonus;
     }
     

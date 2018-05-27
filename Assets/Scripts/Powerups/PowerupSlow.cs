@@ -8,6 +8,7 @@ public class PowerupSlow : Powerup<float> {
 
     override public float GetBonus()
     {
+        //Returns the time during which the player is slowed down
         return slowTime;
     }
 }

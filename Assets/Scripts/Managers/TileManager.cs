@@ -24,18 +24,22 @@ public class TileManager : MonoBehaviour {
 	}
 
 	void Start () {
+        //Instantiates all the tiles at the beginning of the game
 		for (int i = 0; i < tilesMaxLength; i++) {
             tile = tileTypes[Random.Range(0, tileTypesLength)];
 			tilesList[i]=GameObject.Instantiate (tile,new Vector3(0, 0, 0), new Quaternion());
 			tilesList[i].SetActive (false);
 		}
+
+        //Spawns the starting tiles
 		for (int i = 0; i < tilesOnScreen; i++) {
 			SpawnTile ();
 		}
 	}
 		
-	// Update is called once per frame
 	void Update () {
+        //When the player goes beyond rerootZ, each game object is moved back to avoid
+        //floating point precision errors, thus rerooting the scene to the origin
         if (player.transform.position.z >= rerootZ)
         {
             ReRootTiles();
@@ -46,6 +50,7 @@ public class TileManager : MonoBehaviour {
 	}
 
     void ReRootTiles() {
+        //Function to bring the tiles back by playerposition
         currentSpawnPoint.transform.position -= new Vector3(0, 0, player.transform.position.z);
         for (int i = 0; i < tilesMaxLength; i++)
         {
@@ -57,7 +62,8 @@ public class TileManager : MonoBehaviour {
 
 	void SpawnTile(){
 		tileFound = false;
-		//Generiamo un indice casuale da cui partire per non generare le tiles sempre nello stesso ordine
+        //Generates a random index to spawn tiles each time in a different order,
+        //then finds a free tile and spawns it
 		tileIndex = Random.Range (0, tilesMaxLength);
 		while (!tileFound) {
 			for (int i = tileIndex; i < tilesMaxLength; i++) {

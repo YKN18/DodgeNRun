@@ -12,6 +12,7 @@ public class EndManager : MonoBehaviour {
     private ScoreObject s;
 
     public void Menu() {
+        //Menu button function, loads the menu scene
         SceneManagement.LoadScene(0);
     }
 
@@ -21,6 +22,7 @@ public class EndManager : MonoBehaviour {
     }
 
     public void Leaderboard() {
+        //Sets the leaderboard panel active and loads the data from player prefs
         leaderboardPanel.SetActive(true);
         Leaderboard leaderboard;
 
@@ -51,6 +53,7 @@ public class EndManager : MonoBehaviour {
 
     public void Save()
     {
+        //Saves the last score into the lederboard object and then player prefs
         Leaderboard leaderboard;
         string leaderboard_string = SaveLoad.LoadLeaderboard();
         if (leaderboard_string != "")

@@ -8,6 +8,7 @@ public class RedObstacle :  MonoBehaviour, Damaging{
 
     public int GetDamage()
     {
+        //Returns the damage dealt by the red cube
         return damage;
     }
 }

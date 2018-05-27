@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Bar : MonoBehaviour {
 
+    //Class to handle the loading of loading bars
+
     public Transform loadingBar;
     public Transform textPercent;
 

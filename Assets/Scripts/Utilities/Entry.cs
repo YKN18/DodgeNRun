@@ -6,6 +6,7 @@ using UnityEngine;
 
 [System.Serializable]
 public class Entry {
+    //Serializable object to store a player attempt in the game with name and score
     public string playerName;
     public ScoreObject score;
     public int timestamp;

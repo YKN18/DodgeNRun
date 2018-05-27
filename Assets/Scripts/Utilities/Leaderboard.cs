@@ -5,6 +5,7 @@ using UnityEngine;
 
 [System.Serializable]
 public class Leaderboard {
+    //Class to handle the insert, sorting and resizing of the entries in the leaderboard
     public List<Entry> leaderboard;
     private int capacity;
 

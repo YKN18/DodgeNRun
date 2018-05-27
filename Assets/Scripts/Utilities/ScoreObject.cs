@@ -1,5 +1,6 @@
 ﻿[System.Serializable]
 public class ScoreObject  {
+    //Object to store a score with coins collected and lasted time
     public int coins;
     public int time;
 

@@ -7,6 +7,7 @@ public class PowerupInvincible : Powerup<float>{
 
     override public float GetBonus()
     {
+        //Returns the time during which the player is invincible
         return invincibleTime;
     }
 }

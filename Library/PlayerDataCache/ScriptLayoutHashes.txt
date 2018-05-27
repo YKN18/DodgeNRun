@@ -90,7 +90,7 @@ f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 ce09cb02e2f857c8aa562f2552261f90 Assembly-CSharp.dll:.RedObstacle
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CoinManager
 62e3ecf7f923fac4b8f6cea424fce3c3 Assembly-CSharp.dll:.DemoManager
-400b1c57281a2e488e777ca9ded8f21b Assembly-CSharp.dll:.EndManager
+e833eefc80bc1d72f6c4610dea0e350a Assembly-CSharp.dll:.EndManager
 e07c5892300198669b7693cc07959a51 Assembly-CSharp.dll:.PowerupManager
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 dbc29a6f2739d277c10da432d73adb6d UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack

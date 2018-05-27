@@ -12,6 +12,7 @@ public class Tile : MonoBehaviour {
 
 
     void Awake() {
+        //Instantiates one of each powerup for each tile
         for (int i = 0; i < 3; i++)
         {
             powerup = powerups[i];
@@ -22,22 +23,24 @@ public class Tile : MonoBehaviour {
 
 	public void Spawn(GameObject currentSpawnPoint){
 
-        //Rendiamo visibili tutte le monete già prese
+        //Resets the visibility of the collected coins in the scene
         foreach (Transform child in coins.transform)
             child.gameObject.SetActive(true);
 
-        //Rendiamo visibili anche gli ostacoli già colpiti
+        //Resets the visibility of the hit obstacles
         obstacle.gameObject.SetActive(true);
 
-        //Rendiamo visibile un powerup a caso
+        //Spawns a random powerup (occasionally)
         if (Random.Range(1, 10) == 1)
             powerupList[Random.Range(0, 3)].SetActive(true);
 
-        //Infine attiviamo la tile
+        //Sets the tile visible
         transform.SpawnObject(currentSpawnPoint.transform);
 	}
 
 	void OnBecameInvisible(){
+        //When the tile becomes invisible, it's set invisible and
+        //powerups are deactivated
         foreach (Transform child in powerupSpawnPoint.transform)
             child.gameObject.SetActive(false);
 

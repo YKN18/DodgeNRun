@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class SaveLoad {
+
+    //Collection of methods to save and load data from player prefs
+
     public static void SaveLastScore(string lastScore) {
         PlayerPrefs.SetString("LASTSCORE", lastScore);
     }
