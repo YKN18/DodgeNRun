@@ -174,14 +174,6 @@ public class Player : MonoBehaviour {
         }
     }
 
-    //If the player hits an obstacle while moving sideways, it's brought back
-    //to the original position smoothly
-    void OnCollisionEnter(Collision c) {
-        if (c.collider.tag == "GreenObstacle" && !ready) {
-            StopCoroutine("MoveSideways");
-            StartCoroutine("RecoverFromHit");
-        }
-    }
 
     //While the player touches the ground or the green cube, isgrounded is true and
     //the jump is possible
@@ -206,6 +198,10 @@ public class Player : MonoBehaviour {
                 HealthManager.instance.Hit(c.GetComponent<Damaging>().GetDamage());
                 if (c.transform.parent.gameObject.layer != 8) c.transform.parent.gameObject.SetActive(false);
                 else c.gameObject.SetActive(false);
+            }
+            else if (c.tag == "ObstacleSide" && !ready) {
+                StopCoroutine("MoveSideways");
+                StartCoroutine("RecoverFromHit");
             }
         }
         else if (c.gameObject.layer == 11)

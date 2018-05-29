@@ -418,23 +418,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1963573246462602, guid: 9e19f43b420796f49afced2a6ce956a8,
     type: 2}
   m_PrefabInternal: {fileID: 1041388543}
---- !u!95 &221827508
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 221827507}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: af9b29c985697a04ba2632de75a2922a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!4 &221827513 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4272231978158508, guid: 9e19f43b420796f49afced2a6ce956a8,
@@ -1778,21 +1761,6 @@ Prefab:
     - target: {fileID: 4272231978158508, guid: 9e19f43b420796f49afced2a6ce956a8, type: 2}
       propertyPath: m_RootOrder
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114567175791962728, guid: 9e19f43b420796f49afced2a6ce956a8,
-        type: 2}
-      propertyPath: speed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 23274258432473600, guid: 9e19f43b420796f49afced2a6ce956a8,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 624c7f68554c8b949bb7d936ad18e10a, type: 2}
-    - target: {fileID: 23274258432473600, guid: 9e19f43b420796f49afced2a6ce956a8,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e19f43b420796f49afced2a6ce956a8, type: 2}
