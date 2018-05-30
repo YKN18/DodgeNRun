@@ -140,7 +140,7 @@ c07371cd776f4d6a5a7cbfb59e0a6760 Assembly-CSharp.dll:.CustomInputField
 e5db5ca3031bd9542cf29880a86d4a5c Assembly-CSharp.dll:.PowerupSlow
 e5db5ca3031bd9542cf29880a86d4a5c Assembly-CSharp.dll:.PowerupHealth
 553447be0ca9e0c227d0fc6d0b345a2e Assembly-CSharp.dll:.SoundManager
-e60cb3826c15f282968d0f4f47c1ad30 Assembly-CSharp.dll:.CanvasManager
+83165c9d4703159d8d536b7c5c85ff65 Assembly-CSharp.dll:.CanvasManager
 92201e4e2609b1f642957438d012d62b Assembly-CSharp.dll:.PBFilled
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour

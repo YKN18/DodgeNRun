@@ -8,8 +8,8 @@ public class CanvasManager : MonoBehaviour {
 
     public static CanvasManager instance;
 
-    [SerializeField] GameObject pausePanel, pauseButton;
-    [SerializeField] Text timeText, healthText, coinText;
+    [SerializeField] GameObject pausePanel, pauseButton, countDownPanel;
+    [SerializeField] Text timeText, healthText, coinText, countDownText;
     private bool isPaused = false;
 
     void Awake()
@@ -27,9 +27,29 @@ public class CanvasManager : MonoBehaviour {
         SoundManager.instance.PauseSoundtrack();
     }
 
+    public void StartCountDown() {
+        pausePanel.SetActive(false);
+        countDownPanel.SetActive(true);
+        StartCoroutine("CountDown");
+    }
+
+    IEnumerator CountDown() {
+        //Time.deltaTime can't be uses sice the timescale is set to 0
+        float cur = Time.realtimeSinceStartup;
+        float t = 4;
+        countDownText.text = ((int)t).ToString();
+        while (t > 1.05) {
+            t -= Time.realtimeSinceStartup - cur;
+            cur = Time.realtimeSinceStartup;
+            countDownText.text = ((int)t).ToString();
+            yield return 0;
+        }
+        Resume();
+    }
+
     public void Resume() {
         //Resumes the game from pause
-        pausePanel.SetActive(false);
+        countDownPanel.SetActive(false);
         pauseButton.SetActive(true);
         Time.timeScale = 1;
         SoundManager.instance.PlaySoundtrack();

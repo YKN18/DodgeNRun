@@ -23,7 +23,6 @@ public class Player : MonoBehaviour {
     private int damage;
     [SerializeField] float speedUp = 2;
     private Vector2 startTouchCoordinates;
-
     void Start() {
         rb = GetComponent<Rigidbody>();
     }
